@@ -1,4 +1,3 @@
-import sun.tools.jconsole.Worker;
 
 import java.sql.*;
 
@@ -39,7 +38,7 @@ public class Loggin_Register {
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
             statement = connection.createStatement();
-            statement.execute("CREATE TABLE IF NOT EXISTS `workbase`.`login_register` (login VARCHAR (200) , password VARCHAR (200))");
+            statement.execute("CREATE TABLE IF NOT EXISTS `workbase`.`login_register` (login VARCHAR (200) PRIMARY KEY, password VARCHAR (200))");
             statement.close();
             connection.close();
         } catch (SQLException e) {
@@ -48,18 +47,16 @@ public class Loggin_Register {
 
     }
 
-    void register (typeOfWorker type) {
+    void register (Worker worker) {
 
         Connection connection = null;
         Statement statement = null;
 
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `workbase`.`login_register`.`login`(?,?,?)");
-            preparedStatement.setString(0,);
-            preparedStatement.setString(1,);
-            preparedStatement.setString(2.);
-
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `workbase`.`login_register`.`login`(?,?)");
+            preparedStatement.setString(0,worker.getUser());
+            preparedStatement.setString(1,worker.getPassword());
             preparedStatement.close();
             connection.close();
         } catch (SQLException e) {
