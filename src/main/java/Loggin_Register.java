@@ -1,22 +1,24 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Loggin_Register {
     public static void main(String[] args) {
+
         Loggin_Register loggin_register = new Loggin_Register();
         //loggin_register.login();
-        loggin_register.create();
+        loggin_register.createUserTable();
     }
 
-    void login () {
+    private String URL = "jdbc:mysql://localhost:3306/?user=root?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private String USER = "root";
+    private String PASSWORD = "av23@h11";
+
+    void createDataBase () {
 
         Connection connection = null;
         Statement statement = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/?user=root?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "av23@h11");
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
             statement = connection.createStatement();
             statement.execute("CREATE IF NOT EXISTS DATABASE WorkBase");
             statement.close();
@@ -27,17 +29,15 @@ public class Loggin_Register {
         }
 
     }
-    void create () {
+    void createUserTable () {
 
         Connection connection = null;
         Statement statement = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/?user=root?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "av23@h11");
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
             statement = connection.createStatement();
-            statement.execute("CREATE TABLE IF NOT EXISTS `workbase`.`work` (login VARCHAR (200) , password VARCHAR (200))");
-            
-
+            statement.execute("CREATE TABLE IF NOT EXISTS `workbase`.`login_register` (login VARCHAR (200) , password VARCHAR (200))");
             statement.close();
             connection.close();
         } catch (SQLException e) {
@@ -46,7 +46,21 @@ public class Loggin_Register {
 
     }
 
-    void register (String login, String password) {
+    void register () {
+
+        Connection connection = null;
+        Statement statement = null;
+
+        try {
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `workbase`.`login_register`.`login`()");
+
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
+
 }
