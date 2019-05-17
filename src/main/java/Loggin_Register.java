@@ -47,7 +47,7 @@ public class Loggin_Register {
 
     }
 
-    void register (Worker worker) {
+    void saveWorkerToDAO (Worker worker) {
 
         Connection connection = null;
         Statement statement = null;

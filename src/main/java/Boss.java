@@ -3,9 +3,9 @@ public class Boss {
 
     Loggin_Register logginRegister = new Loggin_Register();
 
-    void createWorker (typeOfWorker type) {
+    Worker worker = null;
 
-        Worker worker = null;
+    void createWorker (typeOfWorker type) {
 
         switch (type){
             case BRICKLAYER:
@@ -17,9 +17,10 @@ public class Boss {
             case TILER:
                 worker = new Tiler();
         }
+    }
 
-        logginRegister.register(worker);
-
+    void register () {
+        logginRegister.saveWorkerToDAO(worker);
     }
 
 }
