@@ -1,9 +1,12 @@
+
 abstract class Worker {
-    private String name;
-    private String surname;
-    private int age;
-    private String user;
-    private String password;
-    typeOfWorker typeWorker;
+
+    String name;
+    String surname;
+    String user;
+    String password;
+    int age;
+    typeOfWorker type;
+
 }
 

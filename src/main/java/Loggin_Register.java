@@ -1,3 +1,5 @@
+import sun.tools.jconsole.Worker;
+
 import java.sql.*;
 
 public class Loggin_Register {
@@ -46,14 +48,17 @@ public class Loggin_Register {
 
     }
 
-    void register () {
+    void register (typeOfWorker type) {
 
         Connection connection = null;
         Statement statement = null;
 
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `workbase`.`login_register`.`login`()");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `workbase`.`login_register`.`login`(?,?,?)");
+            preparedStatement.setString(0,);
+            preparedStatement.setString(1,);
+            preparedStatement.setString(2.);
 
             preparedStatement.close();
             connection.close();

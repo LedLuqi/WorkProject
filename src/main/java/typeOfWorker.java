@@ -1,2 +1,2 @@
-public enum typeOfWorker {
+public enum typeOfWorker {TILER,BRICKLAYER,CARPENTER
 }
